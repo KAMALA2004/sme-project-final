@@ -1,0 +1,42 @@
+/* src/components/HomePage.css */
+.home {
+  text-align: center;
+  padding: 20px;
+}
+
+.home-banner {
+  width: 80%;
+  max-width: 600px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.info-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+
+.info-section.reverse {
+  flex-direction: row-reverse;
+}
+
+.info-text {
+  flex: 1;
+  padding: 20px;
+}
+
+.info-image {
+  flex: 1;
+  max-width: 400px;
+  height: auto;
+  padding: 20px;
+}
+
+footer {
+  background-color: #f1f1f1;
+  padding: 10px;
+  text-align: center;
+  margin-top: 20px;
+}

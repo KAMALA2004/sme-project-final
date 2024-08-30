@@ -1,0 +1,30 @@
+/* src/components/AccessibleLoans.css */
+.loans {
+    padding: 20px;
+  }
+  
+  .loans__title {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+  }
+  
+  .loans__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .loans__item {
+    cursor: pointer;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .loans__item:hover {
+    background-color: #f1f1f1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
