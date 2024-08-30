@@ -1,24 +1,54 @@
-/* src/components/InvestorContacts.css */
 .investors {
-    padding: 20px;
-  }
+  padding: 20px;
+  position: relative;
+}
+
+.investors__title {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.investors__filter-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+
+.investors__filter-select {
   
-  .investors__title {
-    font-size: 1.5em;
-    margin-bottom: 20px;
-  }
-  
-  .investors__list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .investors__item {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    background-color: #f9f9f9;
-  }
-  
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+.investors__list {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.investors__item {
+  display: inline-block;
+  width: 300px;
+  padding: 50px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.investors__image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
