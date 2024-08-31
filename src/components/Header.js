@@ -1,7 +1,7 @@
 // src/components/Header.js
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Header.css'; // Ensure this file exists for custom styling
+import './Header.css';
 
 const Header = () => (
   <header className="header">
@@ -11,10 +11,12 @@ const Header = () => (
         <li className="nav__item"><Link to="/loans" className="nav__link">Accessible Loans</Link></li>
         <li className="nav__item"><Link to="/investors" className="nav__link">Investor Contacts</Link></li>
         <li className="nav__item"><Link to="/chatbot" className="nav__link">AI Chatbot</Link></li>
-        <li className="nav__item"><Link to="/search" className="nav__link">Personalized Search</Link></li>
-        <li className="nav__item"><Link to="/" className="nav__link">Profile</Link></li>
+        <li className="nav__item"><Link to="/profile" className="nav__link">Profile</Link></li>
       </ul>
     </nav>
+    <div className="personalized-button-container">
+      <Link to="/personalized-search" className="personalized-button">Go Personalized</Link>
+    </div>
   </header>
 );
 

@@ -1,45 +1,58 @@
 /* src/components/PersonalizedSearch.css */
-.search {
-    padding: 20px;
-  }
-  
-  .search__title {
-    font-size: 1.5em;
-    margin-bottom: 20px;
-  }
-  
-  .search__input {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-right: 10px;
-  }
-  
-  .search__button {
-    padding: 10px 20px;
-    border: none;
-    background-color: #007bff;
-    color: #fff;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .search__button:hover {
-    background-color: #0056b3;
-  }
-  
-  .search__list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .search__item {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    background-color: #f9f9f9;
-  }
-  
+
+.personalized-search {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  max-width: 600px;
+  margin: auto;
+}
+
+.personalized-search h2 {
+  text-align: center;
+}
+
+.question-container {
+  display: none;
+}
+
+.question-container.active {
+  display: block;
+}
+
+.question-container label {
+  display: block;
+  margin: 10px 0;
+}
+
+.question-container input[type="radio"],
+.question-container input[type="text"] {
+  margin-right: 10px;
+}
+
+button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.results {
+  margin-top: 20px;
+}
+
+.result-item {
+  margin: 10px 0;
+}
+
+.results h3 {
+  margin-top: 20px;
+}
