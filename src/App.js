@@ -17,6 +17,7 @@ import EventRegistration from './components/EventRegistration';
 import SuccessStoryDetails from './components/SuccessStoryDetails';
 import Footer from './components/Footer';
 import LoanDetails from './components/LoanDetails';
+import ScheduledMeetings from './components/ScheduledMeetings'; // Import ScheduledMeetings
 
 function App() {
   const [user, setUser] = useState(null);
@@ -48,9 +49,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/loans" element={<AccessibleLoans />} />
-
-                <Route path="/" element={<AccessibleLoans />} />
-        <Route path="/loan-details/:loanName" element={<LoanDetails />} /> 
+                <Route path="/loan-details/:loanName" element={<LoanDetails />} /> 
                 <Route
                   path="/investors"
                   element={
@@ -75,6 +74,7 @@ function App() {
                 <Route path="/register/:eventId" element={<EventRegistration onRegister={handleRegister} />} />
                 <Route path="/success-story/:storyId" element={<SuccessStoryDetails />} />
                 <Route path="/profile" element={<Profile />} />
+                <Route path="/scheduled-meetings" element={<ScheduledMeetings />} /> {/* New Scheduled Meetings route */}
                 <Route path="*" element={<Navigate to="/" />} />
               </Routes>
             </div>

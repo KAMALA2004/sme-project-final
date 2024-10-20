@@ -1,7 +1,7 @@
-// src/components/EventRegistration.js
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { events } from '../data/events';
+import { supabase } from '../supabaseClient';
 import './EventRegistration.css';
 
 const EventRegistration = ({ onRegister }) => {
@@ -25,20 +25,41 @@ const EventRegistration = ({ onRegister }) => {
     setFormData(prevState => ({ ...prevState, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Call the onRegister function passed from parent to update registration status
-    onRegister(event.id);
-    // Add your form submission logic here, e.g., sending formData to a backend server
-    console.log('Form submitted:', formData);
-    // Navigate back to the Event Calendar page
-    navigate('/');
-  };
+  
+    try {
+      const { data, error } = await supabase
+        .from('registrations')
+        .insert([{
+            event_id: event.id,
+            event_name: event.title,
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            business_plan: formData.businessPlan,
+            updates: formData.updates,
+        }]);
+  
+      if (error) throw error;
+
+      // Show success message
+      alert('Registration successful!');
+
+      // Optionally, redirect to scheduled meetings
+      navigate('/scheduled-meetings');
+      
+    } catch (error) {
+      console.error('Error registering for event:', error.message);
+      alert('Registration failed: ' + error.message); // Display error message
+    }
+};
 
   return (
     <section className="event-registration">
       <h2>Register for {event.title}</h2>
       <form className="registration-form" onSubmit={handleSubmit}>
+        {/* Form Fields */}
         <div className="form-group">
           <label htmlFor="name">Name</label>
           <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required />

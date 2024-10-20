@@ -1,12 +1,25 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate
 import './EventCalendar.css';
 import { events } from '../data/events';
 
-const EventCalendar = ({ registeredEvents }) => {
+const EventCalendar = () => {
+  const [registeredEvents, setRegisteredEvents] = useState({});
+  const navigate = useNavigate(); // Initialize the useNavigate hook
+
+  const handleRegister = (eventId) => {
+    setRegisteredEvents((prev) => ({
+      ...prev,
+      [eventId]: true, // Mark the event as registered
+    }));
+    // Navigate to the Event Registration page with the event ID
+    navigate(`/register/${eventId}`); 
+  };
+
   return (
     <section className="event-calendar">
       <h2>Event Calendar and Networking Opportunities</h2>
+      <Link to="/scheduled-meetings" className="view-scheduled-button">View Scheduled Meetings</Link>
       <div className="event-grid">
         {events.map(event => (
           <div key={event.id} className="event-card">
@@ -15,11 +28,13 @@ const EventCalendar = ({ registeredEvents }) => {
             <p><strong>Location:</strong> {event.location}</p>
             <p>{event.description}</p>
             {registeredEvents[event.id] ? (
-              <button className="registered-button">Registered Successfully</button>
+              <button className="registered-button" disabled>
+                Registered Successfully
+              </button>
             ) : (
-              <Link to={`/register/${event.id}`} className="register-button">
+              <button onClick={() => handleRegister(event.id)} className="register-button">
                 Register Now
-              </Link>
+              </button>
             )}
           </div>
         ))}
