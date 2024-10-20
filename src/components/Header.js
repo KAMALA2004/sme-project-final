@@ -14,8 +14,8 @@ const Header = () => (
         <li><Link to="/profile">👤 Profile</Link></li>
       </ul>
     </nav>
-    <div className="personalized">
-      <Link to="/personalized-search">Go Personalized</Link>
+    <div className="personalized-container">
+      <Link to="/personalized-search" className="personalized-button">Go Personalized</Link>
     </div>
   </header>
 );
