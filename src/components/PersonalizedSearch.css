@@ -1,6 +1,7 @@
 /* src/components/PersonalizedSearch.css */
 
 .personalized-search {
+  margin-top: 150px;
   font-family: Arial, sans-serif;
   padding: 20px;
   max-width: 600px;
@@ -12,6 +13,7 @@
 }
 
 .question-container {
+  margin-top: 200px;
   display: none;
 }
 

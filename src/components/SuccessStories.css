@@ -1,10 +1,11 @@
 /* src/components/SuccessStories.css */
 .success-stories {
   padding: 40px 20px;
-  background-color: #fff;
+  background-color: #88BCBD
 }
 
 .success-stories h2 {
+  
   text-align: center;
   margin-bottom: 30px;
   font-size: 2em;

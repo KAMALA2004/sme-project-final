@@ -15,7 +15,7 @@ import EventCalendar from './components/EventCalendar';
 import SuccessStories from './components/SuccessStories';
 import EventRegistration from './components/EventRegistration';
 import SuccessStoryDetails from './components/SuccessStoryDetails';
-import Footer from './components/Footer';
+
 import LoanDetails from './components/LoanDetails';
 
 function App() {
@@ -78,7 +78,7 @@ function App() {
                 <Route path="*" element={<Navigate to="/" />} />
               </Routes>
             </div>
-            <Footer />
+            
           </>
         ) : (
           <Routes>
