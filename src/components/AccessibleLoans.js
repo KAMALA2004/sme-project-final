@@ -1,53 +1,86 @@
 import React, { useState, useEffect } from 'react';
-import './AccessibleLoans.css'; // Ensure this file exists for custom styling
+import { Link } from 'react-router-dom';
+import './AccessibleLoans.css';
 
 const AccessibleLoans = () => {
   const [loans, setLoans] = useState([]);
+  const [category, setCategory] = useState('All');
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
-    // Hardcoded loan data for testing
     const sampleLoans = [
       {
-        name: 'Home Loan',
-        description: 'A loan for purchasing or renovating a home.',
-        url: 'https://www.google.com/search?q=Home+Loan'
+        name: 'SME Working Capital Loan',
+        icon: '💼',
+        description: 'For daily business operations',
+        category: 'Working Capital',
+        url: '/loan-details/SME%20Working%20Capital%20Loan'
       },
       {
-        name: 'Education Loan',
-        description: 'A loan to finance higher education.',
-        url: 'https://www.google.com/search?q=Education+Loan'
+        name: 'SME Equipment Loan',
+        icon: '🛠',
+        description: 'For purchasing equipment',
+        category: 'Equipment',
+        url: '/loan-details/SME%20Equipment%20Loan'
       },
       {
-        name: 'Personal Loan',
-        description: 'A loan for personal expenses.',
-        url: 'https://www.google.com/search?q=Personal+Loan'
+        name: 'SME Trade Finance Loan',
+        icon: '📈',
+        description: 'For trade financing',
+        category: 'Trade Finance',
+        url: '/loan-details/SME%20Trade%20Finance%20Loan'
+      },
+      {
+        name: 'Commercial Vehicle Loan',
+        icon: '🚚',
+        description: 'For commercial vehicles',
+        category: 'Vehicle',
+        url: '/loan-details/Commercial%20Vehicle%20Loan'
       }
     ];
+
     setLoans(sampleLoans);
   }, []);
 
-  const handleClick = (url) => {
-    window.open(url, '_blank'); // Opens the URL in a new tab
-  };
+  const filteredLoans = loans.filter(loan => 
+    (category === 'All' || loan.category === category) &&
+    loan.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
-    <div className="loans">
-      <h2 className="loans__title">Accessible Loans and Schemes</h2>
-      <ul className="loans__list">
-        {loans.length > 0 ? (
-          loans.map((loan, index) => (
-            <li
-              key={index}
-              onClick={() => handleClick(loan.url)}
-              className="loans__item"
-            >
-              <strong>{loan.name}</strong>: {loan.description}
-            </li>
-          ))
-        ) : (
-          <li className="loans__item">No loans available</li>
-        )}
-      </ul>
+    <div className="accessible-loans">
+      <div className="filter-options">
+        <select onChange={(e) => setCategory(e.target.value)} value={category}>
+          <option value="All">All Categories</option>
+          <option value="Working Capital">Working Capital</option>
+          <option value="Equipment">Equipment</option>
+          <option value="Trade Finance">Trade Finance</option>
+          <option value="Vehicle">Vehicle</option>
+        </select>
+        <input 
+          type="text" 
+          placeholder="Search loans..." 
+          value={searchQuery} 
+          onChange={(e) => setSearchQuery(e.target.value)} 
+        />
+      </div>
+      {filteredLoans.length > 0 ? (
+        <div className="loan-cards">
+          {filteredLoans.map((loan, index) => (
+            <div key={index} className="loan-card">
+              <div className="loan-icon">{loan.icon}</div>
+              <div className="loan-details">
+                <h3 className="loan-name">
+                  <Link to={loan.url}>{loan.name}</Link>
+                </h3>
+                <p className="loan-description">{loan.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p>No loans available</p>
+      )}
     </div>
   );
 };

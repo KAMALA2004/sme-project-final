@@ -1,0 +1,41 @@
+/* src/components/LoanDetails.css */
+
+.loan-detail-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.bank-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.bank-button {
+  background-color: #478080;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  width: 200px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.bank-details {
+  background-color: #7fb2b2;
+  padding: 20px;
+  margin-top: 20px;
+  width: 300px;
+}
+
+.bank-details h2 {
+  font-family: 'Arial', sans-serif;
+  font-size: 1.5em;
+}
+
+.bank-button:hover {
+  background-color: #639696;
+}

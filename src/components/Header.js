@@ -4,18 +4,18 @@ import { Link } from 'react-router-dom';
 import './Header.css';
 
 const Header = () => (
-  <header className="header">
-    <nav className="nav">
-      <ul className="nav__list">
-        <li className="nav__item"><Link to="/home" className="nav__link">Home</Link></li>
-        <li className="nav__item"><Link to="/loans" className="nav__link">Accessible Loans</Link></li>
-        <li className="nav__item"><Link to="/investors" className="nav__link">Investor Contacts</Link></li>
-        <li className="nav__item"><Link to="/chatbot" className="nav__link">AI Chatbot</Link></li>
-        <li className="nav__item"><Link to="/profile" className="nav__link">Profile</Link></li>
+  <header>
+    <nav>
+      <ul>
+        <li><Link to="/home">🏠 Home</Link></li>
+        <li><Link to="/loans">📊 Accessible Loans</Link></li>
+        <li><Link to="/investors">👤 Investor Contacts</Link></li>
+        <li><Link to="/chatbot">🤖 AI Chatbot</Link></li>
+        <li><Link to="/profile">👤 Profile</Link></li>
       </ul>
     </nav>
-    <div className="personalized-button-container">
-      <Link to="/personalized-search" className="personalized-button">Go Personalized</Link>
+    <div className="personalized">
+      <Link to="/personalized-search">Go Personalized</Link>
     </div>
   </header>
 );

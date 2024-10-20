@@ -11,15 +11,15 @@ const InvestorContacts = () => {
 
   useEffect(() => {
     const data = [
-      { name: 'Investor 1', category: 'Tech', contactInfo: 'investor1@example.com', image: '/photos/investor1.jpg', reviews: 'Great for startups!', location: 'San Francisco, CA', yearsOfExperience: 10, 
+      { name: 'Investor 1', category: 'Tech', contactInfo: 'investor1@example.com', image: 'https://static.vecteezy.com/system/resources/previews/024/354/252/non_2x/businessman-isolated-illustration-ai-generative-free-photo.jpg', reviews: 'Great for startups!', location: 'San Francisco, CA', yearsOfExperience: 10, 
         investmentFocus: 'Early-stage tech companies', successfulInvestments: 25, bio: 'Investor 1 has over 10 years of experience in tech investments, focusing on early-stage startups.' },
-      { name: 'Investor 2', category: 'Healthcare', contactInfo: 'investor2@example.com', image: '/photos/investor2.png', reviews: 'Helpful and supportive.', 
+      { name: 'Investor 2', category: 'Healthcare', contactInfo: 'investor2@example.com', image: 'https://img.freepik.com/premium-photo/headshot-photos-indian-women-dynamic-professions-occassions-indian-girl_978786-295.jpg', reviews: 'Helpful and supportive.', 
         location: 'Boston, MA', yearsOfExperience: 15,  investmentFocus: 'Biotech and healthcare startups',  successfulInvestments: 30, bio: 'Investor 2 is a leading expert in healthcare investments with a portfolio of over 50 companies.' },
-      { name: 'Investor 3', category: 'Retail', contactInfo: 'investor3@example.com', image: '/photos/investor3.png', reviews: 'Helpful and supportive.', bio: 'Investor 2 is a leading expert in healthcare investments with a portfolio of over 50 companies.' },
-      { name: 'Investor 4', category: 'Finance', contactInfo: 'investor4@example.com', image: '/photos/investor4.png', reviews: 'Helpful and supportive.', bio: 'Investor 2 is a leading expert in healthcare investments with a portfolio of over 50 companies.' },
-      { name: 'Investor 5', category: 'Healthcare', contactInfo: 'investor5@example.com', image: '/photos/investor1.jpg', reviews: 'Helpful and supportive.', bio: 'Investor 2 is a leading expert in healthcare investments with a portfolio of over 50 companies.' },
-      { name: 'Investor 6', category: 'Tech', contactInfo: 'investor6@example.com', image: '/photos/investor2.png', reviews: 'Helpful and supportive.', bio: 'Investor 2 is a leading expert in healthcare investments with a portfolio of over 50 companies.' },
-      { name: 'Investor 7', category: 'Real Estate', contactInfo: 'investor7@example.com', image: '/photos/investor4.png', reviews: 'Helpful and supportive.', bio: 'Investor 2 is a leading expert in healthcare investments with a portfolio of over 50 companies.' },
+      { name: 'Investor 3', category: 'Retail', contactInfo: 'investor3@example.com', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwRPWpO-12m19irKlg8znjldmcZs5PO97B6A&s', reviews: 'Helpful and supportive.', bio: 'Investor 2 is a leading expert in healthcare investments with a portfolio of over 50 companies.' },
+      { name: 'Investor 4', category: 'Finance', contactInfo: 'investor4@example.com', image: 'https://img.freepik.com/premium-photo/female-headshot-photos-indian-women-dynamic-profession-occassions_978786-168.jpg', reviews: 'Helpful and supportive.', bio: 'Investor 2 is a leading expert in healthcare investments with a portfolio of over 50 companies.' },
+      { name: 'Investor 5', category: 'Healthcare', contactInfo: 'investor5@example.com', image: 'https://img.freepik.com/premium-photo/coffee-job-males-happy-smile-office-men-person-indian-businessman-sitting-lifestyle-laptop-technology-manager-success_163305-210011.jpg', reviews: 'Helpful and supportive.', bio: 'Investor 2 is a leading expert in healthcare investments with a portfolio of over 50 companies.' },
+      { name: 'Investor 6', category: 'Tech', contactInfo: 'investor6@example.com', image: 'https://t3.ftcdn.net/jpg/06/36/69/86/360_F_636698674_DroChEj5eWmZiaZOSDMnj8hcDqqw74Fp.jpg', reviews: 'Helpful and supportive.', bio: 'Investor 2 is a leading expert in healthcare investments with a portfolio of over 50 companies.' },
+      { name: 'Investor 7', category: 'Real Estate', contactInfo: 'investor7@example.com', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwRPWpO-12m19irKlg8znjldmcZs5PO97B6A&s', reviews: 'Helpful and supportive.', bio: 'Investor 2 is a leading expert in healthcare investments with a portfolio of over 50 companies.' },
 
       // ... Add more investors
     ];
@@ -45,7 +45,7 @@ const InvestorContacts = () => {
   const closeModal = () => {
     setSelectedInvestor(null);
   };
-  return (
+return (
     <div className="investors">
       <h2 className="investors__title">Investor Contacts</h2>
       <div className="investors__filter-container">

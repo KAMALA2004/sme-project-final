@@ -1,36 +1,89 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
-import './Login.css'; // Import the CSS file
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { auth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from '../firebaseConfig';
+import './Login.css';
 
-function Login() { // Changed login to Login (capitalized)
-  const navigate = useNavigate(); // Initialize navigate
+function Login() {
+  const navigate = useNavigate();
+  const [isSignup, setIsSignup] = useState(false);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
-  // Function to handle navigation to Profile page upon login
-  const handleLogin = (e) => {
-    e.preventDefault(); // Prevent the default form submission
-    // Add your login logic here
-    navigate('/profile'); // Navigate to the Profile page
+  const handleAuth = async (e) => {
+    e.preventDefault();
+    try {
+      if (isSignup) {
+        if (password !== confirmPassword) {
+          alert('Passwords do not match!');
+          return;
+        }
+        await createUserWithEmailAndPassword(auth, email, password);
+        // You may want to update the user profile with the name here
+      } else {
+        await signInWithEmailAndPassword(auth, email, password);
+      }
+      navigate('/home');
+    } catch (error) {
+      console.error('Authentication error:', error);
+      alert(error.message);
+    }
   };
 
-  // Function to handle navigation to Register page
-  const goToRegister = () => {
-    navigate('/register'); // Navigate to the Register page
+  const toggleSignup = () => {
+    setIsSignup(!isSignup);
   };
 
   return (
-    <div className="profile-container">
-      <h1 className="profile__title">Login</h1> {/* Changed title to Login */}
-      <form className="profile__form" onSubmit={handleLogin}> {/* Added onSubmit */}
-        <input type="email" className="profile__input" placeholder="Email Address" required />
-        <input type="password" className="profile__input" placeholder="Password" required />
-        <button type="submit" className="profile_button">Login</button> {/* Submit button for login */}
-        <button 
-          type="button" 
-          className="profile__toggle-button" 
-          onClick={goToRegister}
-          style={{ backgroundColor: 'white', color: 'black' }}
+    <div className="login-container">
+      <h1 className="login-title">{isSignup ? 'Sign Up' : 'Login'}</h1>
+      <form className="login-form" onSubmit={handleAuth}>
+        {isSignup && (
+          <input
+            type="text"
+            className="login-input"
+            placeholder="Full Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+        )}
+        <input
+          type="email"
+          className="login-input"
+          placeholder="Email Address"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <input
+          type="password"
+          className="login-input"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        {isSignup && (
+          <input
+            type="password"
+            className="login-input"
+            placeholder="Confirm Password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+          />
+        )}
+        <button type="submit" className="login-button">
+          {isSignup ? 'Sign Up' : 'Login'}
+        </button>
+        <button
+          type="button"
+          className="login-toggle-button"
+          onClick={toggleSignup}
         >
-          Don't have an Account? Signup
+          {isSignup ? 'Already have an Account? Login' : "Don't have an Account? Sign Up"}
         </button>
       </form>
     </div>

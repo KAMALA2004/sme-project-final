@@ -1,30 +1,64 @@
-/* src/components/AccessibleLoans.css */
-.loans {
-    padding: 20px;
-  }
-  
-  .loans__title {
-    font-size: 1.5em;
-    margin-bottom: 20px;
-  }
-  
-  .loans__list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .loans__item {
-    cursor: pointer;
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    transition: background-color 0.3s, box-shadow 0.3s;
-  }
-  
-  .loans__item:hover {
-    background-color: #f1f1f1;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
+/* AccessibleLoans.css */
+
+body {
+  background-color: #88BCBD;
+}
+
+.accessible-loans {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+.filter-options {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.filter-options select,
+.filter-options input {
+  padding: 8px;
+  font-size: 16px;
+}
+
+.loan-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+
+.loan-card {
+  background-color: #528585;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  width: 200px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.loan-card:hover {
+  transform: scale(1.05);
+}
+
+.loan-icon {
+  font-size: 40px;
+  margin-bottom: 8px;
+}
+
+.loan-name a {
+  text-decoration: none;
+  color: #d6d6d6;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.loan-description {
+  color: #bbb6b6;
+  font-size: 14px;
+  margin-top: 8px;
+}

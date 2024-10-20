@@ -1,6 +1,11 @@
 /* src/App.css */
 .App {
-  text-align: center;
+  .App {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    min-height: 100vh;
+  }
 }
 
 .auth-container {

@@ -1,5 +1,5 @@
 import React from 'react';
-import './HomePage.css'; // Ensure this file exists for custom styling
+import './HomePage.css';
 
 const HomePage = () => {
   return (
@@ -12,16 +12,16 @@ const HomePage = () => {
       <h1>Welcome to Our Site</h1>
       <p>Explore our services and offerings.</p>
 
-      <div className="info-section">
-        <div className="info-text">
-          <h2>Accessible Loans and Available Schemes</h2>
-          <p>We provide detailed information about various loans and schemes that are accessible to SMEs. Our aim is to help you find the best financial solutions for your business needs.</p>
-        </div>
+      <div className="info-section image-left">
         <img 
           src="https://media.istockphoto.com/id/1145371340/photo/partner-has-made-a-fraud-in-the-contract-of-sale-and-being-handed-a-cash-and-pen-to-the.jpg?s=612x612&w=0&k=20&c=gEL2GiGxVAWIg6zd73afHWjVE37cNEBww49DE45jwiI=" 
           alt="Accessible Loans" 
           className="info-image" 
         />
+        <div className="info-text">
+          <h2>Accessible Loans and Available Schemes</h2>
+          <p>We provide detailed information about various loans and schemes that are accessible to SMEs. Our aim is to help you find the best financial solutions for your business needs.</p>
+        </div>
       </div>
 
       <div className="info-section">
@@ -36,16 +36,16 @@ const HomePage = () => {
         </div>
       </div>
 
-      <div className="info-section">
-        <div className="info-text">
-          <h2>AI Chatbot Assistant</h2>
-          <p>Our AI chatbot is here to help you clarify your doubts, identify gaps in your strategies, and assist with pitching ideas. Get real-time assistance tailored to your business needs.</p>
-        </div>
+      <div className="info-section image-left">
         <img 
           src="https://www.shutterstock.com/image-vector/chatbot-using-chatting-artificial-intelligence-600nw-2258695375.jpg" 
           alt="AI Chatbot" 
           className="info-image" 
         />
+        <div className="info-text">
+          <h2>AI Chatbot Assistant</h2>
+          <p>Our AI chatbot is here to help you clarify your doubts, identify gaps in your strategies, and assist with pitching ideas. Get real-time assistance tailored to your business needs.</p>
+        </div>
       </div>
 
       <div className="info-section">
@@ -60,9 +60,7 @@ const HomePage = () => {
         </div>
       </div>
 
-      <footer className="footer">
-        <p>&copy; 2024 Your Company. All rights reserved.</p>
-      </footer>
+      
     </div>
   );
 };

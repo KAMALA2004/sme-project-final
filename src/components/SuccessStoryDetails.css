@@ -1,31 +1,31 @@
 .success-story-details {
-    padding: 40px 20px;
-    background-color: #fff;
-    display: flex;
-    align-items: flex-start; /* Align items at the start of the container */
-  }
-  
-  .success-story-image {
-    width: 30%; /* Image takes up 40% of the container width */
-    height: auto;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-right: 20px; /* Space between image and text */
-  }
-  
-  .success-story-text {
-    width: 55%; /* Text takes up 55% of the container width */
-  }
-  
-  .success-story-details h2 {
-    text-align: left; /* Align the header text to the left */
-    margin-bottom: 20px;
-    font-size: 2em;
-  }
-  
-  .success-story-details p {
-    font-size: 1.1em;
-    margin-bottom: 15px;
-    line-height: 1.5; /* Add space between lines for readability */
-    text-align: left; /* Align paragraph text to the left */
-  }
+  padding: 40px 20px;
+  background-color: #fff;
+  display: flex;
+  align-items: flex-start; /* Align items at the start of the container */
+}
+
+.success-story-image {
+  width: 30%; /* Image takes up 40% of the container width */
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-right: 20px; /* Space between image and text */
+}
+
+.success-story-text {
+  width: 55%; /* Text takes up 55% of the container width */
+}
+
+.success-story-details h2 {
+  text-align: left; /* Align the header text to the left */
+  margin-bottom: 20px;
+  font-size: 2em;
+}
+
+.success-story-details p {
+  font-size: 1.1em;
+  margin-bottom: 15px;
+  line-height: 1.5; /* Add space between lines for readability */
+  text-align: left; /* Align paragraph text to the left */
+}

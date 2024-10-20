@@ -1,64 +1,64 @@
 /* Register Container */
 .register-container {
-    max-width: 400px;
-    margin: 60px auto;
-    padding: 40px;
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  max-width: 400px;
+  margin: 60px auto;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Register Title */
+.register__title {
+  font-size: 2rem;
+  color: #343a40;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Register Form */
+.register__form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Register Input Fields */
+.register__input {
+  padding: 12px 15px;
+  font-size: 1rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Register Button */
+.register__button {
+  padding: 12px 0;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Alert/Error Message */
+.register__alert {
+  background-color: #f8d7da; /* Light red background */
+  color: #721c24; /* Dark red text */
+  border: 1px solid #f5c6cb; /* Border color for the alert */
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+
+/* Increase width for larger screens */
+@media (min-width: 1024px) {
+  .register-container {
+    max-width: 600px; /* Increased width for larger screens */
+    padding: 50px; /* Optional: Adjust padding if needed */
   }
-  
-  /* Register Title */
-  .register__title {
-    font-size: 2rem;
-    color: #343a40;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  /* Register Form */
-  .register__form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  /* Register Input Fields */
-  .register__input {
-    padding: 12px 15px;
-    font-size: 1rem;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    transition: border-color 0.3s, box-shadow 0.3s;
-  }
-  
-  /* Register Button */
-  .register__button {
-    padding: 12px 0;
-    font-size: 1rem;
-    color: #fff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  /* Alert/Error Message */
-  .register__alert {
-    background-color: #f8d7da; /* Light red background */
-    color: #721c24; /* Dark red text */
-    border: 1px solid #f5c6cb; /* Border color for the alert */
-    padding: 10px;
-    margin-top: 10px;
-    border-radius: 5px;
-    font-size: 0.9rem;
-  }
-  
-  /* Increase width for larger screens */
-  @media (min-width: 1024px) {
-    .register-container {
-      max-width: 600px; /* Increased width for larger screens */
-      padding: 50px; /* Optional: Adjust padding if needed */
-    }
-  }
+}

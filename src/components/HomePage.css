@@ -1,7 +1,11 @@
-/* src/components/HomePage.css */
+body, .home {
+  background-color: #88BCBD; /* Set the background color for the home page */
+}
+
 .home {
   text-align: center;
   padding: 20px;
+  color: #333;
 }
 
 .home-banner {
@@ -9,34 +13,80 @@
   max-width: 600px;
   height: auto;
   margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.home-banner:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 .info-section {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 0;
+  padding: 20px;
+  background-color: #f9f9f9;
+  margin: 20px 0;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
 }
 
-.info-section.reverse {
+.info-section:hover {
+  background-color: #e0f0f0;
+}
+
+.info-section.image-left {
   flex-direction: row-reverse;
 }
 
 .info-text {
   flex: 1;
   padding: 20px;
+  transition: color 0.3s ease;
+}
+
+.info-section:hover .info-text {
+  color: #007B7F;
 }
 
 .info-image {
   flex: 1;
   max-width: 400px;
   height: auto;
-  padding: 20px;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 footer {
-  background-color: #f1f1f1;
+  background-color: #76A5A5;
   padding: 10px;
   text-align: center;
   margin-top: 20px;
+  color: white;
+  border-radius: 10px;
+}
+
+/* New styles for the welcome heading */
+
+h1 {
+  font-size: 2.5rem; /* Adjust the font size for prominence */
+  color: #333; /* Dark color for contrast against the background */
+  margin-bottom: 20px; /* Space below the heading */
+  font-weight: bold; /* Make the text bold */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Subtle shadow for better readability */
+  transition: color 0.3s ease; /* Smooth transition effect for color change */
+}
+
+h1:hover {
+  color: #164b4e; /* Change color on hover for a dynamic effect */
 }
