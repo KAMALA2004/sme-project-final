@@ -15,9 +15,11 @@ import EventCalendar from './components/EventCalendar';
 import SuccessStories from './components/SuccessStories';
 import EventRegistration from './components/EventRegistration';
 import SuccessStoryDetails from './components/SuccessStoryDetails';
-
+import InvestorVideoChat from './components/InvestorVideoChat'; // Import InvestorVideoChat
+import SMEVideoChat from './components/SMEVideoChat';
 import LoanDetails from './components/LoanDetails';
 import ScheduledMeetings from './components/ScheduledMeetings'; // Import ScheduledMeetings
+
 
 function App() {
   const [user, setUser] = useState(null);
@@ -74,7 +76,10 @@ function App() {
                 <Route path="/register/:eventId" element={<EventRegistration onRegister={handleRegister} />} />
                 <Route path="/success-story/:storyId" element={<SuccessStoryDetails />} />
                 <Route path="/profile" element={<Profile />} />
-                <Route path="/scheduled-meetings" element={<ScheduledMeetings />} /> {/* New Scheduled Meetings route */}
+                <Route path="/scheduled-meetings" element={<ScheduledMeetings />} /> 
+                <Route path="/sme-video-chat" element={<SMEVideoChat eventId="meeting-room-1" />} />
+                <Route path="/investor-video-chat" element={<InvestorVideoChat eventId="meeting-room-1" />} />
+               
                 <Route path="*" element={<Navigate to="/" />} />
               </Routes>
             </div>

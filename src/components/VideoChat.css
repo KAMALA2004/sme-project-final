@@ -1,0 +1,30 @@
+.video-chat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.video-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Space between the videos */
+}
+
+.controls {
+  margin-top: 10px;
+}
+
+.control-button {
+  margin: 5px;
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.control-button:hover {
+  background-color: #0056b3;
+}

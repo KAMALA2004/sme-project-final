@@ -1,0 +1,14 @@
+/* src/components/VideoControls.css */
+.video-controls {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+  }
+  
+  .leave-button {
+    background-color: red; /* Distinct color for leaving */
+    color: white;
+  }
+  

@@ -1,0 +1,14 @@
+/* src/components/Participant.css */
+.participant {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+  }
+  
+  .participant.speaking {
+    border-color: #28a745; /* Highlight active speaker */
+  }
+  

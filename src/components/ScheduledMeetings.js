@@ -1,10 +1,13 @@
+// src/components/ScheduledMeetings.js
 import React, { useEffect, useState } from 'react';
 import { supabase } from '../supabaseClient'; // Import Supabase client
+import { useNavigate } from 'react-router-dom';
 
 const ScheduledMeetings = () => {
   const [meetings, setMeetings] = useState([]);
   const [loading, setLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchMeetings = async () => {
@@ -15,25 +18,18 @@ const ScheduledMeetings = () => {
           throw error;
         }
 
-        // Use a Map to ensure unique meetings based on event_id
         const uniqueMeetingsMap = new Map();
-        
-        // Iterate through fetched data and store unique events
         data.forEach(meeting => {
-          // Check if the event_id is already in the map
           if (!uniqueMeetingsMap.has(meeting.event_id)) {
-            // Add unique meeting based on event_id
             uniqueMeetingsMap.set(meeting.event_id, {
               ...meeting,
-              registrationsCount: 1 // Start counting registrations
+              registrationsCount: 1
             });
           } else {
-            // Increment the count for existing event_id
             uniqueMeetingsMap.get(meeting.event_id).registrationsCount += 1;
           }
         });
 
-        // Convert Map values to an array for state
         setMeetings(Array.from(uniqueMeetingsMap.values()));
       } catch (error) {
         console.error("Error fetching meetings:", error);
@@ -61,7 +57,7 @@ const ScheduledMeetings = () => {
           {meetings.map(meeting => (
             <li key={meeting.id}>
               <strong>Event ID:</strong> {meeting.event_id} - <strong>Event Name:</strong> {meeting.event_name} - <strong>Registrations:</strong> {meeting.registrationsCount}
-              <button onClick={() => {/* Join meeting logic */}}>Join Meeting</button>
+              <button onClick={() => navigate(`/video-call/sme/${meeting.event_id}`)}>Join as SME</button>
             </li>
           ))}
         </ul>
