@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from './firebaseConfig';
+import { supabase } from './supabaseClient';
 import Header from './components/Header';
 import HomePage from './components/HomePage';
 import AccessibleLoans from './components/AccessibleLoans';
@@ -15,11 +14,10 @@ import EventCalendar from './components/EventCalendar';
 import SuccessStories from './components/SuccessStories';
 import EventRegistration from './components/EventRegistration';
 import SuccessStoryDetails from './components/SuccessStoryDetails';
-import InvestorVideoChat from './components/InvestorVideoChat'; // Import InvestorVideoChat
+import InvestorVideoChat from './components/InvestorVideoChat';
 import SMEVideoChat from './components/SMEVideoChat';
 import LoanDetails from './components/LoanDetails';
-import ScheduledMeetings from './components/ScheduledMeetings'; // Import ScheduledMeetings
-
+import ScheduledMeetings from './components/ScheduledMeetings';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -27,16 +25,17 @@ function App() {
   const [registeredEvents, setRegisteredEvents] = useState({});
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
+    const checkUserSession = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      setUser(session?.user || null);
       setLoading(false);
-    });
+    };
 
-    return () => unsubscribe();
+    checkUserSession();
   }, []);
 
   const handleRegister = (eventId) => {
-    setRegisteredEvents(prev => ({ ...prev, [eventId]: true }));
+    setRegisteredEvents((prev) => ({ ...prev, [eventId]: true }));
   };
 
   if (loading) return <div>Loading...</div>; // Optional loading state
@@ -79,17 +78,15 @@ function App() {
                 <Route path="/scheduled-meetings" element={<ScheduledMeetings />} /> 
                 <Route path="/sme-video-chat" element={<SMEVideoChat eventId="meeting-room-1" />} />
                 <Route path="/investor-video-chat" element={<InvestorVideoChat eventId="meeting-room-1" />} />
-               
                 <Route path="*" element={<Navigate to="/" />} />
               </Routes>
             </div>
-            
           </>
         ) : (
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="*" element={<Navigate to="/" />} />
+            <Route path="*" element={<Navigate to="/" />} /> {/* Catch all other paths */}
           </Routes>
         )}
       </div>

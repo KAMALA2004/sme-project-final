@@ -1,6 +1,7 @@
+// src/Login.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { auth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from '../firebaseConfig';
+import { supabase } from '../supabaseClient'; // Import the Supabase client
 import './Login.css';
 
 function Login() {
@@ -10,26 +11,48 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
 
   const handleAuth = async (e) => {
     e.preventDefault();
+    setError(''); // Reset error message
+  
     try {
       if (isSignup) {
         if (password !== confirmPassword) {
-          alert('Passwords do not match!');
+          setError('Passwords do not match!');
           return;
         }
-        await createUserWithEmailAndPassword(auth, email, password);
-        // You may want to update the user profile with the name here
+  
+        const { error } = await supabase.auth.signUp({
+          email,
+          password,
+        });
+  
+        if (error) {
+          setError(error.message);
+        } else {
+          // Optionally navigate to a confirmation page
+          navigate('/home');
+        }
       } else {
-        await signInWithEmailAndPassword(auth, email, password);
+        const { error } = await supabase.auth.signInWithPassword({
+          email,
+          password,
+        });
+  
+        if (error) {
+          setError(error.message);
+        } else {
+          navigate('/home');
+        }
       }
-      navigate('/home');
     } catch (error) {
       console.error('Authentication error:', error);
-      alert(error.message);
+      setError(error.message);
     }
   };
+  
 
   const toggleSignup = () => {
     setIsSignup(!isSignup);
@@ -40,49 +63,18 @@ function Login() {
       <h1 className="login-title">{isSignup ? 'Sign Up' : 'Login'}</h1>
       <form className="login-form" onSubmit={handleAuth}>
         {isSignup && (
-          <input
-            type="text"
-            className="login-input"
-            placeholder="Full Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
+          <input type="text" className="login-input" placeholder="Full Name" value={name} onChange={(e) => setName(e.target.value)} required />
         )}
-        <input
-          type="email"
-          className="login-input"
-          placeholder="Email Address"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          className="login-input"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+        <input type="email" className="login-input" placeholder="Email Address" value={email} onChange={(e) => setEmail(e.target.value)} required />
+        <input type="password" className="login-input" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
         {isSignup && (
-          <input
-            type="password"
-            className="login-input"
-            placeholder="Confirm Password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-          />
+          <input type="password" className="login-input" placeholder="Confirm Password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
         )}
+        {error && <div className="login__alert">{error}</div>}
         <button type="submit" className="login-button">
           {isSignup ? 'Sign Up' : 'Login'}
         </button>
-        <button
-          type="button"
-          className="login-toggle-button"
-          onClick={toggleSignup}
-        >
+        <button type="button" className="login-toggle-button" onClick={toggleSignup}>
           {isSignup ? 'Already have an Account? Login' : "Don't have an Account? Sign Up"}
         </button>
       </form>

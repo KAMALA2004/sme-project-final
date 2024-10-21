@@ -1,22 +1,40 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { supabase } from '../supabaseClient'; // Import the Supabase client
 import './Profile.css';
 
 function Profile() {
-  // Sample data for demonstration
   const [user, setUser] = useState({
     profilePic: 'https://via.placeholder.com/150', // Replace with actual profile picture URL
-    name: 'John Doe',
-    email: 'john.doe@example.com',
-    phone: '+1 234 567 8900'
+    name: '',
+    email: '',
+    phone: '+1 234 567 8900' // Default phone number (optional)
   });
 
+  // Fetch the user data from Supabase
+  useEffect(() => {
+    const fetchUserData = async () => {
+      const { data: { user }, error } = await supabase.auth.getUser();
+
+      if (error) {
+        console.error('Error fetching user:', error);
+      } else if (user) {
+        setUser({
+          ...user,
+          name: `${user.user_metadata.firstName || ''} ${user.user_metadata.lastName || ''}`,
+          email: user.email,
+          phone: '+1 234 567 8900' // Default value, update as needed
+        });
+      }
+    };
+
+    fetchUserData();
+  }, []);
+
   const handleEditProfile = () => {
-    // Handle profile edit functionality here
     alert('Edit Profile functionality not implemented.');
   };
 
   const handleChangePassword = () => {
-    // Handle password change functionality here
     alert('Change Password functionality not implemented.');
   };
 
