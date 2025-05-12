@@ -1,51 +1,190 @@
+/* src/components/Chatbot.css */
+
+body {
+  background-color: #f0f9f9;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  color: #2d3748;
+}
+
 .container {
-  width: 60%;
-  height: 85vh;
+  width: 500px;  /* Wider container */
+  height: 650px;  /* Slightly taller */
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
+  border-radius: 24px;
+  background: #f0f9f9;  /* Matching body background */
+  box-shadow: 
+    0 10px 30px rgba(0, 77, 77, 0.15),
+    0 2px 6px rgba(0, 77, 77, 0.1);
+  overflow: hidden;
+  color: #2d3748;
+  margin: 20px auto;
+  user-select: none;
+  position: relative;
+  border: 1px solid rgba(0, 128, 128, 0.15);
+}
+
+.header {
+  padding: 20px 0;
+  text-align: center;
+  background: #f0f9f9;  /* Same as container */
+  border-bottom: 1px solid rgba(0, 128, 128, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header h1 {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0;
+  padding: 0 20px;
+  color: #008080;  /* Teal for the title */
+  letter-spacing: 0.5px;
+}
+
+.header p {
+  font-size: 13px;
+  margin: 6px 0 0;
+  color: #5a7d7d;
+  font-weight: 400;
 }
 
 .response-area {
-  height: 85%;
-  width: 100%;
-  border: 1px solid black;
-  overflow: scroll;
+  flex: 1;
   padding: 20px;
+  overflow-y: auto;
+  background-color: #f0f9f9;  /* Matching background */
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   font-size: 15px;
+  scrollbar-width: thin;
+  scrollbar-color: #c1e3e3 transparent;
+}
+
+.response-area::-webkit-scrollbar {
+  width: 6px;
+}
+
+.response-area::-webkit-scrollbar-thumb {
+  background-color: #c1e3e3;
+  border-radius: 3px;
 }
 
 .prompt-area {
-  height: 15%;
-  width: 100%;
-  border: 1px solid black;
   display: flex;
-  justify-content: space-around;
+  padding: 16px;
+  border-top: 1px solid rgba(0, 128, 128, 0.1);
+  background: #f0f9f9;  /* Matching background */
+  gap: 10px;
   align-items: center;
 }
 
 .prompt-area input {
-  height: 50%;
-  width: 85%;
-  padding: 5px;
+  flex: 1;
+  padding: 12px 18px;
   font-size: 15px;
+  border: 1px solid #c1e3e3;
+  border-radius: 20px;
+  outline: none;
+  background-color: white;
+  color: #2d3748;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0, 77, 77, 0.05);
+}
+
+.prompt-area input::placeholder {
+  color: #a0aec0;
+}
+
+.prompt-area input:focus {
+  border-color: #008080;
+  box-shadow: 0 0 0 2px rgba(0, 128, 128, 0.2);
 }
 
 .prompt-area button {
-  width: 10%;
-  height: 50%;
+  background: #008080;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.prompt-area button:hover {
+  background: #006666;
+  transform: translateY(-1px);
+}
+
+.prompt-area button:active {
+  background: #005555;
+  transform: translateY(0);
 }
 
 .chatbot-message {
-  display: block;
-  width: 100%;
-  text-align: left;
-  margin: 5px;
+  align-self: flex-start;
+  background: white;
+  color: #2d3748;
+  padding: 12px 16px;
+  border-radius: 18px 18px 18px 6px;
+  max-width: 80%;
+  box-shadow: 0 2px 4px rgba(0, 77, 77, 0.1);
+  word-wrap: break-word;
+  font-size: 15px;
+  line-height: 1.5;
+  border: 1px solid rgba(0, 128, 128, 0.1);
 }
 
 .user-message {
-  display: block;
-  width: 100%;
-  text-align: right;
-  margin: 5px;
+  align-self: flex-end;
+  background: #008080;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 18px 18px 6px 18px;
+  max-width: 80%;
+  box-shadow: 0 2px 4px rgba(0, 77, 77, 0.15);
+  word-wrap: break-word;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* Typing indicator */
+.typing-indicator {
+  display: flex;
+  align-self: flex-start;
+  padding: 12px 16px;
+}
+
+.typing-indicator span {
+  height: 8px;
+  width: 8px;
+  background: #008080;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 2px;
+  opacity: 0.4;
+}
+
+.typing-indicator span:nth-child(1) {
+  animation: typingAnimation 1s infinite;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation: typingAnimation 1s infinite 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation: typingAnimation 1s infinite 0.4s;
+}
+
+@keyframes typingAnimation {
+  0% { opacity: 0.4; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-3px); }
+  100% { opacity: 0.4; transform: translateY(0); }
 }
